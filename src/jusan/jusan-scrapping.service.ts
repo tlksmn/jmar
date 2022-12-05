@@ -3,7 +3,6 @@ import * as puppeteer from 'puppeteer';
 import { InjectRepository } from '@nestjs/typeorm';
 import { User } from './entities/jusan-user.entity';
 import { Repository } from 'typeorm';
-import * as request from 'request';
 import * as jsdom from 'jsdom';
 
 const { JSDOM } = jsdom;
@@ -244,13 +243,13 @@ export class JusanScrappingService {
         'sec-ch-ua-platform': '"macOS"',
       },
     };
-    request(options, function (error, response) {
-      if (error) throw new Error(error);
-      console.log(response.headers);
-      const html: string = JSON.parse(response.body).html.pagination_contents;
-      const dom = new JSDOM(html);
-
-      console.log(dom.window.document.querySelectorAll('a.row-status').length);
-    });
+    // request(options, function (error, response) {
+    //   if (error) throw new Error(error);
+    //   console.log(response.headers);
+    //   const html: string = JSON.parse(response.body).html.pagination_contents;
+    //   const dom = new JSDOM(html);
+    //
+    //   console.log(dom.window.document.querySelectorAll('a.row-status').length);
+    // });
   }
 }
