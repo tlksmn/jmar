@@ -36,8 +36,10 @@ describe('jusan api-response', () => {
     it('is jusan api service defined ', () => {
       expect(requestService).toBeDefined();
     });
-    it('is', () => {
-      expect(true).toBeTruthy();
+    it('is', async () => {
+      const temp = await requestService.handle({});
+      expect(requestService.handle).toHaveBeenCalled();
+      expect(temp).toBeTruthy();
     });
   });
 });

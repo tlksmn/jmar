@@ -1,7 +1,4 @@
 import { HttpException, HttpStatus, Injectable } from '@nestjs/common';
-import { InjectRepository } from '@nestjs/typeorm';
-import { User } from '../jusan/entities/jusan-user.entity';
-import { Repository } from 'typeorm';
 import * as jsdom from 'jsdom';
 import { ProductJusan } from '../jusan/jusan-scrapping.service';
 import { RequestService } from '../jusan/tools/request/request.service';
@@ -14,10 +11,7 @@ type LoginT = {
 
 @Injectable()
 export class JusanApiService {
-  constructor(
-    // @InjectRepository(User) private readonly userRepository: Repository<User>,
-    private readonly requestService: RequestService,
-  ) {}
+  constructor(private readonly requestService: RequestService) {}
   async getProductList({ password, login }: LoginT) {
     const options = {
       method: 'POST',
